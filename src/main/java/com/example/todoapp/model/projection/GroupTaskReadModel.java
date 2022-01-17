@@ -2,8 +2,6 @@ package com.example.todoapp.model.projection;
 
 import com.example.todoapp.model.Task;
 
-import java.time.LocalDateTime;
-
 public class GroupTaskReadModel {
     private String description;
     private boolean done;

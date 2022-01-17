@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
+@RequestMapping("/notes")
 public class NoteController {
 
     public static final Logger logger = LoggerFactory.getLogger(TaskController.class);
@@ -20,20 +21,20 @@ public class NoteController {
         this.noteRepository = noteRepository;
     }
 
-    @GetMapping(path = "/notes")
+    @GetMapping
     ResponseEntity<?> readAllNotes() {
         logger.warn("Exposing all the notes!");
         return ResponseEntity.ok(noteRepository.findAll());
     }
 
-    @GetMapping("/note/{id}")
+    @GetMapping("/{id}")
     ResponseEntity<Note> readNote(@PathVariable int id) {
         return noteRepository.findById(id)
                 .map(note -> ResponseEntity.ok(note))
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/notes/{id}")
+    @PutMapping("/{id}")
     ResponseEntity<?> updateNote(@PathVariable int id, @RequestBody @Valid Note toUpdate) {
         if (!noteRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
@@ -43,13 +44,13 @@ public class NoteController {
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping("/notes/add")
+    @PostMapping("/add")
     ResponseEntity<Note> addNote(@RequestBody @Valid Note note) {
         Note result = noteRepository.save(note);
         return ResponseEntity.created(URI.create("/" + result.getId())).body(result);
     }
 
-    @DeleteMapping("/note/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     ResponseEntity<Note> deleteNote(@PathVariable int id) {
         if (!noteRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
