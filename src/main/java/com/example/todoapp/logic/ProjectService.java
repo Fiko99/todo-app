@@ -6,6 +6,7 @@ import com.example.todoapp.model.TaskGroupRepository;
 import com.example.todoapp.model.projection.GroupReadModel;
 import com.example.todoapp.model.projection.GroupTaskWriteModel;
 import com.example.todoapp.model.projection.GroupWriteModel;
+import com.example.todoapp.model.projection.ProjectWriteModel;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -27,15 +28,15 @@ public class ProjectService {
         return repository.findAll();
     }
 
-    public Project save(Project toSave) {
-        return repository.save(toSave);
+    public Project save(ProjectWriteModel toSave) {
+        return repository.save(toSave.toProject());
     }
 
     public GroupReadModel createGroup(LocalDateTime deadline, int projectId) {
         if (taskGroupRepository.existsByDoneIsFalseAndProject_Id(projectId)) {
             throw new IllegalStateException("Only one undone group from project is allowed");
         }
-        GroupReadModel result = repository.findById(projectId)
+        return repository.findById(projectId)
                 .map(project -> {
                     var targetGroup = new GroupWriteModel();
                     targetGroup.setDescription(project.getDescription());
@@ -47,10 +48,9 @@ public class ProjectService {
                                                 task.setDeadline(deadline.plusDays(projectStep.getDaysToDeadline()));
                                                 return task;
                                             }
-                                    ).collect(Collectors.toSet())
+                                    ).collect(Collectors.toList())
                     );
-                    return service.createGroup(targetGroup);
+                    return service.createGroup(targetGroup, project);
                 }).orElseThrow(() -> new IllegalArgumentException("Project with given id not found"));
-        return result;
     }
 }

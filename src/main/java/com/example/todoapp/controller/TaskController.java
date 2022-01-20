@@ -13,6 +13,7 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequestMapping("/tasks")
@@ -21,7 +22,7 @@ public class TaskController {
     public static final Logger logger = LoggerFactory.getLogger(TaskController.class);
     private final TaskRepository taskRepository;
 
-    public TaskController(@Lazy final TaskRepository taskRepository) {
+    public TaskController(final TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
 
