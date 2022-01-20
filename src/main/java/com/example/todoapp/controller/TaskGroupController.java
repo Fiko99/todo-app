@@ -1,17 +1,13 @@
 package com.example.todoapp.controller;
 
 import com.example.todoapp.logic.TaskGroupService;
-import com.example.todoapp.model.ProjectStep;
 import com.example.todoapp.model.Task;
 import com.example.todoapp.model.TaskRepository;
 import com.example.todoapp.model.projection.GroupReadModel;
 import com.example.todoapp.model.projection.GroupTaskWriteModel;
 import com.example.todoapp.model.projection.GroupWriteModel;
-import com.example.todoapp.model.projection.ProjectWriteModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -23,9 +19,9 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 @Controller
+//@IllegalExceptionProcessing
 @RequestMapping("/groups")
 public class TaskGroupController {
 

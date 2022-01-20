@@ -1,6 +1,8 @@
 package com.example.todoapp.model;
 
 
+import com.example.todoapp.model.event.TaskEvent;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
@@ -76,6 +78,11 @@ public class Task {
 
     void setGroup(TaskGroup group) {
         this.group = group;
+    }
+
+    public TaskEvent toggle() {
+        this.done = !this.done;
+        return TaskEvent.changed(this);
     }
 
     public void updateFrom(Task source) {
