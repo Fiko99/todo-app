@@ -16,7 +16,7 @@ public class ReportController {
     private final TaskRepository taskRepository;
     private final PersistedTaskEventRepository eventRepository;
 
-    public ReportController(TaskRepository taskRepository, PersistedTaskEventRepository eventRepository) {
+    public ReportController(final TaskRepository taskRepository, final PersistedTaskEventRepository eventRepository) {
         this.taskRepository = taskRepository;
         this.eventRepository = eventRepository;
     }

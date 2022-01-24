@@ -68,10 +68,6 @@ public class Task {
         return done;
     }
 
-    public void setDone(boolean done) {
-        this.done = done;
-    }
-
     TaskGroup getGroup() {
         return group;
     }

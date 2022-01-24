@@ -21,7 +21,7 @@ public class TaskController {
     private final ApplicationEventPublisher eventPublisher;
     private final TaskRepository taskRepository;
 
-    public TaskController(ApplicationEventPublisher eventPublisher, final TaskRepository taskRepository) {
+    public TaskController(ApplicationEventPublisher eventPublisher, TaskRepository taskRepository) {
         this.eventPublisher = eventPublisher;
         this.taskRepository = taskRepository;
     }

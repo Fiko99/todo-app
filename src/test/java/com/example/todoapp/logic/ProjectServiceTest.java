@@ -100,7 +100,7 @@ class ProjectServiceTest {
         return new InMemoryGroupRepository();
     }
 
-    private static class InMemoryGroupRepository implements TaskGroupRepository{
+    private static class InMemoryGroupRepository implements TaskGroupRepository {
         private int index = 0;
         private Map<Integer, TaskGroup> map = new HashMap<>();
 

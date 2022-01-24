@@ -62,7 +62,7 @@ public class TaskGroupController {
 
     @ResponseBody
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity <List<Task>> readAllTasksFromGroup(@PathVariable int id) {
+    ResponseEntity<List<Task>> readAllTasksFromGroup(@PathVariable int id) {
         return ResponseEntity.ok(taskRepository.findAllByGroup_Id(id));
     }
 

@@ -15,7 +15,7 @@ public class ChangedTaskEventListener {
 
     private final PersistedTaskEventRepository repository;
 
-    public ChangedTaskEventListener(PersistedTaskEventRepository repository) {
+    ChangedTaskEventListener(final PersistedTaskEventRepository repository) {
         this.repository = repository;
     }
 

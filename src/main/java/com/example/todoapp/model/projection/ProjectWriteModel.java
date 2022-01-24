@@ -8,7 +8,6 @@ import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ProjectWriteModel {
     @NotBlank(message = "Project's description cannot be null and empty")

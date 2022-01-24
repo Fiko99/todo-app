@@ -12,9 +12,9 @@ public class PersistedTaskEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
-    LocalDateTime occurrence;
     int taskId;
     String name;
+    LocalDateTime occurrence;
 
     public PersistedTaskEvent() {
     }

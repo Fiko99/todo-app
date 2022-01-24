@@ -1,8 +1,6 @@
 package com.example.todoapp.model;
 
 
-import com.example.todoapp.model.event.TaskEvent;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Set;

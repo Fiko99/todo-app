@@ -7,7 +7,6 @@ import com.example.todoapp.model.TaskRepository;
 import com.example.todoapp.model.projection.GroupReadModel;
 import com.example.todoapp.model.projection.GroupWriteModel;
 
-import javax.swing.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
